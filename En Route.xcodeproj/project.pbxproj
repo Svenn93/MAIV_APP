@@ -22,6 +22,7 @@
 		260CE0BE193C530300EA843C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260CE0A2193C530200EA843C /* CoreData.framework */; };
 		260CE0C6193C530300EA843C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 260CE0C4193C530300EA843C /* InfoPlist.strings */; };
 		260CE0C8193C530300EA843C /* En_RouteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0C7193C530300EA843C /* En_RouteTests.m */; };
+		260CE0D3193C534F00EA843C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0D2193C534F00EA843C /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		260CE0C3193C530300EA843C /* En RouteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "En RouteTests-Info.plist"; sourceTree = "<group>"; };
 		260CE0C5193C530300EA843C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		260CE0C7193C530300EA843C /* En_RouteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = En_RouteTests.m; sourceTree = "<group>"; };
+		260CE0D1193C534F00EA843C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		260CE0D2193C534F00EA843C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				260CE0B3193C530300EA843C /* Images.xcassets */,
 				260CE0B0193C530300EA843C /* En_Route.xcdatamodeld */,
 				260CE0A5193C530200EA843C /* Supporting Files */,
+				260CE0D1193C534F00EA843C /* MainViewController.h */,
+				260CE0D2193C534F00EA843C /* MainViewController.m */,
 			);
 			path = "En Route";
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				260CE0AF193C530300EA843C /* AppDelegate.m in Sources */,
 				260CE0B2193C530300EA843C /* En_Route.xcdatamodeld in Sources */,
 				260CE0AB193C530200EA843C /* main.m in Sources */,
+				260CE0D3193C534F00EA843C /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +453,7 @@
 				260CE0CD193C530300EA843C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		260CE0CE193C530300EA843C /* Build configuration list for PBXNativeTarget "En RouteTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +462,7 @@
 				260CE0D0193C530300EA843C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

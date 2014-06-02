@@ -23,6 +23,7 @@
 		260CE0C6193C530300EA843C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 260CE0C4193C530300EA843C /* InfoPlist.strings */; };
 		260CE0C8193C530300EA843C /* En_RouteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0C7193C530300EA843C /* En_RouteTests.m */; };
 		260CE0D3193C534F00EA843C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0D2193C534F00EA843C /* MainViewController.m */; };
+		260CE0D8193C56DF00EA843C /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0D7193C56DF00EA843C /* MainView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		260CE0C7193C530300EA843C /* En_RouteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = En_RouteTests.m; sourceTree = "<group>"; };
 		260CE0D1193C534F00EA843C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		260CE0D2193C534F00EA843C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		260CE0D6193C56DF00EA843C /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		260CE0D7193C56DF00EA843C /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +126,8 @@
 				260CE0B3193C530300EA843C /* Images.xcassets */,
 				260CE0B0193C530300EA843C /* En_Route.xcdatamodeld */,
 				260CE0A5193C530200EA843C /* Supporting Files */,
-				260CE0D1193C534F00EA843C /* MainViewController.h */,
-				260CE0D2193C534F00EA843C /* MainViewController.m */,
+				260CE0D5193C56BE00EA843C /* ViewControllers */,
+				260CE0D4193C56B100EA843C /* Views */,
 			);
 			path = "En Route";
 			sourceTree = "<group>";
@@ -156,6 +159,24 @@
 				260CE0C4193C530300EA843C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		260CE0D4193C56B100EA843C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				260CE0D6193C56DF00EA843C /* MainView.h */,
+				260CE0D7193C56DF00EA843C /* MainView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		260CE0D5193C56BE00EA843C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				260CE0D1193C534F00EA843C /* MainViewController.h */,
+				260CE0D2193C534F00EA843C /* MainViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260CE0D8193C56DF00EA843C /* MainView.m in Sources */,
 				260CE0AF193C530300EA843C /* AppDelegate.m in Sources */,
 				260CE0B2193C530300EA843C /* En_Route.xcdatamodeld in Sources */,
 				260CE0AB193C530200EA843C /* main.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  MainView.h
 //  En Route
 //
 //  Created by Sven Lombaert on 02/06/14.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainView.h"
 
-@interface MainViewController : UIViewController
+@interface MainView : UIView
 
 @end

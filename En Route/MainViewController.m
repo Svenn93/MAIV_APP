@@ -18,7 +18,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        CGRect frame = [[UIScreen mainScreen]bounds];
+        MainView *mv = [[MainView alloc]initWithFrame:frame];
+        [self setView:mv];
+        [self setTitle:@"Home"];
     }
     return self;
 }
@@ -27,6 +30,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning

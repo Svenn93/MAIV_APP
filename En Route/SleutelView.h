@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  SleutelView.h
 //  En Route
 //
 //  Created by Sven Lombaert on 02/06/14.
@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainView.h"
-#import "SleutelViewController.h"
 
-@interface MainViewController : UIViewController<MainViewDelegate>
+@interface SleutelView : UIView
 
 @end

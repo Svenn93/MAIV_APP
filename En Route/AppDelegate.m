@@ -21,7 +21,7 @@
     
     self.mainVC = [[MainViewController alloc]initWithNibName:nil bundle:nil];
     UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:self.mainVC];
-    
+    [navVC setNavigationBarHidden:YES];
     [self.window setRootViewController:navVC];
     
     self.window.backgroundColor = [UIColor whiteColor];

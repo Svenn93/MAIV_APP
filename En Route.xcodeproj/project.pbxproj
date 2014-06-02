@@ -24,6 +24,11 @@
 		260CE0C8193C530300EA843C /* En_RouteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0C7193C530300EA843C /* En_RouteTests.m */; };
 		260CE0D3193C534F00EA843C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0D2193C534F00EA843C /* MainViewController.m */; };
 		260CE0D8193C56DF00EA843C /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0D7193C56DF00EA843C /* MainView.m */; };
+		260CE0DB193C598D00EA843C /* LabelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0DA193C598D00EA843C /* LabelFactory.m */; };
+		260CE0DE193C5AF900EA843C /* WhisperADream.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 260CE0DD193C5AF900EA843C /* WhisperADream.ttf */; };
+		260CE0E1193C6DEC00EA843C /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 260CE0E0193C6DEC00EA843C /* Utils.m */; };
+		2692FDE5193CA2CA00C738C8 /* SleutelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692FDE4193CA2CA00C738C8 /* SleutelViewController.m */; };
+		2692FDE8193CA34E00C738C8 /* SleutelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692FDE7193CA34E00C738C8 /* SleutelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,16 @@
 		260CE0D2193C534F00EA843C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		260CE0D6193C56DF00EA843C /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		260CE0D7193C56DF00EA843C /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		260CE0D9193C598D00EA843C /* LabelFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelFactory.h; sourceTree = "<group>"; };
+		260CE0DA193C598D00EA843C /* LabelFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelFactory.m; sourceTree = "<group>"; };
+		260CE0DD193C5AF900EA843C /* WhisperADream.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WhisperADream.ttf; sourceTree = "<group>"; };
+		260CE0DF193C6DEC00EA843C /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		260CE0E0193C6DEC00EA843C /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		2692FDE2193C9F3900C738C8 /* MainViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewDelegate.h; sourceTree = "<group>"; };
+		2692FDE3193CA2CA00C738C8 /* SleutelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleutelViewController.h; sourceTree = "<group>"; };
+		2692FDE4193CA2CA00C738C8 /* SleutelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleutelViewController.m; sourceTree = "<group>"; };
+		2692FDE6193CA34E00C738C8 /* SleutelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleutelView.h; sourceTree = "<group>"; };
+		2692FDE7193CA34E00C738C8 /* SleutelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleutelView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +136,7 @@
 		260CE0A4193C530200EA843C /* En Route */ = {
 			isa = PBXGroup;
 			children = (
+				260CE0DC193C599200EA843C /* LabelFactory */,
 				260CE0AD193C530200EA843C /* AppDelegate.h */,
 				260CE0AE193C530300EA843C /* AppDelegate.m */,
 				260CE0B3193C530300EA843C /* Images.xcassets */,
@@ -128,6 +144,8 @@
 				260CE0A5193C530200EA843C /* Supporting Files */,
 				260CE0D5193C56BE00EA843C /* ViewControllers */,
 				260CE0D4193C56B100EA843C /* Views */,
+				260CE0DF193C6DEC00EA843C /* Utils.h */,
+				260CE0E0193C6DEC00EA843C /* Utils.m */,
 			);
 			path = "En Route";
 			sourceTree = "<group>";
@@ -135,6 +153,7 @@
 		260CE0A5193C530200EA843C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				260CE0DD193C5AF900EA843C /* WhisperADream.ttf */,
 				260CE0A6193C530200EA843C /* En Route-Info.plist */,
 				260CE0A7193C530200EA843C /* InfoPlist.strings */,
 				260CE0AA193C530200EA843C /* main.m */,
@@ -166,6 +185,9 @@
 			children = (
 				260CE0D6193C56DF00EA843C /* MainView.h */,
 				260CE0D7193C56DF00EA843C /* MainView.m */,
+				2692FDE2193C9F3900C738C8 /* MainViewDelegate.h */,
+				2692FDE6193CA34E00C738C8 /* SleutelView.h */,
+				2692FDE7193CA34E00C738C8 /* SleutelView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -175,8 +197,19 @@
 			children = (
 				260CE0D1193C534F00EA843C /* MainViewController.h */,
 				260CE0D2193C534F00EA843C /* MainViewController.m */,
+				2692FDE3193CA2CA00C738C8 /* SleutelViewController.h */,
+				2692FDE4193CA2CA00C738C8 /* SleutelViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		260CE0DC193C599200EA843C /* LabelFactory */ = {
+			isa = PBXGroup;
+			children = (
+				260CE0D9193C598D00EA843C /* LabelFactory.h */,
+				260CE0DA193C598D00EA843C /* LabelFactory.m */,
+			);
+			name = LabelFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +259,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Sven Lombaert";
 				TargetAttributes = {
+					260CE098193C530200EA843C = {
+						DevelopmentTeam = 9RZW73LTB7;
+					};
 					260CE0B8193C530300EA843C = {
 						TestTargetID = 260CE098193C530200EA843C;
 					};
@@ -255,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				260CE0A9193C530200EA843C /* InfoPlist.strings in Resources */,
+				260CE0DE193C5AF900EA843C /* WhisperADream.ttf in Resources */,
 				260CE0B4193C530300EA843C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +316,10 @@
 				260CE0B2193C530300EA843C /* En_Route.xcdatamodeld in Sources */,
 				260CE0AB193C530200EA843C /* main.m in Sources */,
 				260CE0D3193C534F00EA843C /* MainViewController.m in Sources */,
+				260CE0E1193C6DEC00EA843C /* Utils.m in Sources */,
+				2692FDE8193CA34E00C738C8 /* SleutelView.m in Sources */,
+				260CE0DB193C598D00EA843C /* LabelFactory.m in Sources */,
+				2692FDE5193CA2CA00C738C8 /* SleutelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,10 +436,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "En Route/En Route-Prefix.pch";
 				INFOPLIST_FILE = "En Route/En Route-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -408,10 +452,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "En Route/En Route-Prefix.pch";
 				INFOPLIST_FILE = "En Route/En Route-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

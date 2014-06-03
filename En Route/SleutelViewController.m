@@ -7,6 +7,7 @@
 //
 
 #import "SleutelViewController.h"
+#import "Utils.h"
 
 @interface SleutelViewController ()
 
@@ -27,6 +28,7 @@
 {
     CGRect frame = [[UIScreen mainScreen]bounds];
     SleutelView *v = [[SleutelView alloc]initWithFrame:frame];
+    v.delegate = self;
     [self setView:v];
 }
 
@@ -40,6 +42,26 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)backButtonTapped
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)textfieldEditingChangedWithDirectionUp:(BOOL)up
+{
+    CGRect frame = [[UIScreen mainScreen]bounds];
+    CGSize realWidthHeight = [Utils sizeInOrientation];
+    if(up) {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view setFrame:CGRectMake(frame.origin.x, frame.origin.y-70, realWidthHeight.width, realWidthHeight.height)];
+        }];
+    }else {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view setFrame:CGRectMake(0, 0, realWidthHeight.width, realWidthHeight.height)];
+        }];
+    }
 }
 
 /*

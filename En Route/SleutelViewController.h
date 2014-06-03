@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SleutelView.h"
 
-@interface SleutelViewController : UIViewController
+@interface SleutelViewController : UIViewController<SleutelViewDelegate>
 
 @end

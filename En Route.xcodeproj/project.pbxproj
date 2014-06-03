@@ -74,6 +74,7 @@
 		2692FDE4193CA2CA00C738C8 /* SleutelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleutelViewController.m; sourceTree = "<group>"; };
 		2692FDE6193CA34E00C738C8 /* SleutelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleutelView.h; sourceTree = "<group>"; };
 		2692FDE7193CA34E00C738C8 /* SleutelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleutelView.m; sourceTree = "<group>"; };
+		2692FDE9193D25DA00C738C8 /* SleutelViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SleutelViewDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +189,7 @@
 				2692FDE2193C9F3900C738C8 /* MainViewDelegate.h */,
 				2692FDE6193CA34E00C738C8 /* SleutelView.h */,
 				2692FDE7193CA34E00C738C8 /* SleutelView.m */,
+				2692FDE9193D25DA00C738C8 /* SleutelViewDelegate.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";

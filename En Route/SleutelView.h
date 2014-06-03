@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SleutelViewDelegate.h"
 
-@interface SleutelView : UIView
+@interface SleutelView : UIView<UITextFieldDelegate>
+@property (nonatomic, strong) UITextField *textfield;
+@property (nonatomic, strong) UIImageView *ivSleutel;
+@property (nonatomic, strong) UIButton *backButton;
+@property (nonatomic, weak) id<SleutelViewDelegate> delegate;
 
 @end

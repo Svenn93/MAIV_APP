@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface LabelFactory : NSObject
-+ (UILabel *)createTypewriterLabelWithText: (NSString*)text andXPos: (double)xpos andYPos: (double)ypos andWidth: (float)width andRotation:(double)rotation andFont: (NSString* )fontString andFontSize: (double)fontsize andKerning: (NSNumber *)letterKerning andLineHeight: (int)lineHeight andCentered:(BOOL)centered;
++ (UILabel *)createLabelWithText: (NSString*)text andXPos: (double)xpos andYPos: (double)ypos andWidth: (float)width andRotation:(double)rotation andFont: (NSString* )fontString andFontSize: (double)fontsize andKerning: (NSNumber *)letterKerning andLineHeight: (int)lineHeight andCentered:(BOOL)centered;
 @end

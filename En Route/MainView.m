@@ -17,9 +17,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         CGSize bestFrame = [Utils sizeInOrientation];
-        self.lblToolTip = [LabelFactory createTypewriterLabelWithText:@"Klik links als je een begeleider bent, rechts als je een deelnemer bent."
-                           andXPos:bestFrame.width/2 - 110 andYPos:40 andWidth:220 andRotation:0 andFont:@"WhisperADream" andFontSize:22
-                           andKerning:[NSNumber numberWithInt:0] andLineHeight:1 andCentered:YES];
+        self.lblToolTip = [LabelFactory createLabelWithText:@"Klik links als je een begeleider bent, rechts als je een deelnemer bent."
+                           andXPos:bestFrame.width/2 - 125 andYPos:40 andWidth:250 andRotation:0 andFont:@"WhisperADream" andFontSize:20
+                           andKerning:[NSNumber numberWithInt:1] andLineHeight:1 andCentered:YES];
         [self addSubview:self.lblToolTip];
         [self setBackgroundColor:[UIColor colorWithRed:238/255.0f green:229/255.0f blue:206/255.f alpha:1]];
         self.lblToolTip.textAlignment = NSTextAlignmentCenter;

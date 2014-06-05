@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Utils : NSObject
+#define apiurl @"http://student.howest.be/laurens.dhondt/20132014/MAIV/enroute/api/"
 +(CGSize) sizeInOrientation;
 @end

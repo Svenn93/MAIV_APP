@@ -35,6 +35,8 @@
 		26A393E119405E320029D410 /* StraatKeuzeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393E019405E320029D410 /* StraatKeuzeView.m */; };
 		26A393EA194064C80029D410 /* UIView+EnRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393E9194064C80029D410 /* UIView+EnRoute.m */; };
 		26A393ED194070510029D410 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393EC194070510029D410 /* NavigationViewController.m */; };
+		26A393F019408D6B0029D410 /* StraatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393EF19408D6B0029D410 /* StraatData.m */; };
+		26A393F619408EAE0029D410 /* StraatFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393F519408EAE0029D410 /* StraatFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,10 @@
 		26A393E9194064C80029D410 /* UIView+EnRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EnRoute.m"; sourceTree = "<group>"; };
 		26A393EB194070510029D410 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		26A393EC194070510029D410 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		26A393EE19408D6B0029D410 /* StraatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraatData.h; sourceTree = "<group>"; };
+		26A393EF19408D6B0029D410 /* StraatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraatData.m; sourceTree = "<group>"; };
+		26A393F419408EAE0029D410 /* StraatFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraatFactory.h; sourceTree = "<group>"; };
+		26A393F519408EAE0029D410 /* StraatFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraatFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,9 +167,10 @@
 		260CE0A4193C530200EA843C /* En Route */ = {
 			isa = PBXGroup;
 			children = (
-				260CE0DC193C599200EA843C /* LabelFactory */,
+				26A393F219408E5D0029D410 /* Factories */,
 				260CE0AD193C530200EA843C /* AppDelegate.h */,
 				260CE0AE193C530300EA843C /* AppDelegate.m */,
+				26A393F119408D750029D410 /* DataObjects */,
 				260CE0B3193C530300EA843C /* Images.xcassets */,
 				260CE0B0193C530300EA843C /* En_Route.xcdatamodeld */,
 				260CE0A5193C530200EA843C /* Supporting Files */,
@@ -242,6 +249,33 @@
 				260CE0DA193C598D00EA843C /* LabelFactory.m */,
 			);
 			name = LabelFactory;
+			sourceTree = "<group>";
+		};
+		26A393F119408D750029D410 /* DataObjects */ = {
+			isa = PBXGroup;
+			children = (
+				26A393EE19408D6B0029D410 /* StraatData.h */,
+				26A393EF19408D6B0029D410 /* StraatData.m */,
+			);
+			name = DataObjects;
+			sourceTree = "<group>";
+		};
+		26A393F219408E5D0029D410 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				26A393F319408E6B0029D410 /* StraatFactory */,
+				260CE0DC193C599200EA843C /* LabelFactory */,
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
+		26A393F319408E6B0029D410 /* StraatFactory */ = {
+			isa = PBXGroup;
+			children = (
+				26A393F419408EAE0029D410 /* StraatFactory.h */,
+				26A393F519408EAE0029D410 /* StraatFactory.m */,
+			);
+			name = StraatFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +377,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A393F619408EAE0029D410 /* StraatFactory.m in Sources */,
+				26A393F019408D6B0029D410 /* StraatData.m in Sources */,
 				26A393DD1940484C0029D410 /* StraatKeuzeViewController.m in Sources */,
 				26A393E119405E320029D410 /* StraatKeuzeView.m in Sources */,
 				26A393ED194070510029D410 /* NavigationViewController.m in Sources */,

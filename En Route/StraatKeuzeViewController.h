@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StraatFactory.h"
+#import "StraatData.h"
+#import "StraatKeuzeView.h"
 
 @interface StraatKeuzeViewController : UIViewController
-
+@property (nonatomic, strong)NSMutableArray *arrStraten;
+@property (nonatomic, strong)StraatKeuzeView *customView;
 @end

@@ -8,7 +8,7 @@
 
 #import "StraatKeuzeViewController.h"
 #import "UIViewController+PortraitViewController.h"
-#import "StraatKeuzeView.h"
+#import "Utils.h"
 
 @interface StraatKeuzeViewController ()
 
@@ -21,15 +21,58 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        UIImage *titleImage = [UIImage imageNamed:@"kieseenstraat"];
+        UIImageView *titleView = [[UIImageView alloc]initWithImage:titleImage];
+        [titleView setFrame:CGRectMake(0, 0, titleImage.size.width, titleImage.size.height)];
+        self.navigationItem.titleView = titleView;
+        
+        NSString *path = [NSString stringWithFormat:@"%@straten", apiurl];
+        NSURL *url = [NSURL URLWithString:path];
+        
+        [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if(connectionError){
+                //eventueel errormessage voorzien
+                NSLog(@"Er is een error %@", connectionError);
+            }else{
+                NSLog(@"Tis gelukt");
+                NSError *jsonError = nil;
+                NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+                
+                if(jsonError)
+                {
+                    //eventueel errormessage voorzien
+                    NSLog(@"De json is slecht");
+                }else{
+                    self.arrStraten = [NSMutableArray array];
+                    for(NSDictionary *dict in loadedData)
+                    {
+                        StraatData *straat = [StraatFactory createStraatWithDictionary:dict];
+                        [self.arrStraten addObject:straat];
+                    }
+                    [self buildViewWithArray:self.arrStraten];
+                }
+            }
+        }];
     }
     return self;
+}
+
+- (void)buildViewWithArray:(NSMutableArray *)array
+{
+    NSLog(@"Json ingeladen, build de view");
+    if(self.customView)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [(StraatKeuzeView *)self.view buildWithArray:array];
+        });
+    }
 }
 
 - (void)loadView
 {
     CGRect frame = [[UIScreen mainScreen]bounds];
-    StraatKeuzeView *v = [[StraatKeuzeView alloc]initWithFrame:frame];
-    [self setView:v];
+    self.customView= [[StraatKeuzeView alloc]initWithFrame:frame];
+    [self setView:self.customView];
 }
 
 - (void)viewDidLoad

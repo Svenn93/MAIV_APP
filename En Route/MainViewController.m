@@ -7,7 +7,8 @@
 //
 
 #import "MainViewController.h"
-
+#import "UitlegViewController.h"
+#import "UIViewController+PortraitViewController.h"
 @interface MainViewController ()
 
 @end
@@ -18,9 +19,25 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillAppear:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [(MainView *)self.view doLogoAnimation];
 }
 
 -(void)loadView
@@ -29,7 +46,6 @@
     MainView *mv = [[MainView alloc]initWithFrame:frame];
     [self setView:mv];
     mv.delegate = self;
-    [self setTitle:@"Home"];
 }
 
 - (void)viewDidLoad
@@ -44,6 +60,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)enumerateFonts
 {
     NSLog(@"--Start enumerating font--");
@@ -57,12 +74,10 @@
     NSLog(@"--End enumerating font--");
 }
 
-- (void)begeleiderButtonTapped
+- (void)startButtonTapped
 {
-    //inladen volgende controller
-    SleutelViewController *sleutelVC = [[SleutelViewController alloc]initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:sleutelVC animated:YES];
-    
+    UitlegViewController *uitlegVC = [[UitlegViewController alloc]initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:uitlegVC animated:YES];
 }
 
 /*

@@ -9,6 +9,7 @@
 #import "Utils.h"
 
 @implementation Utils
+
 +(CGSize) sizeInOrientation
 {
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;

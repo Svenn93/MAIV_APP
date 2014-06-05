@@ -10,5 +10,5 @@
 
 @protocol MainViewDelegate <NSObject>
 @required
--(void)begeleiderButtonTapped;
+-(void)startButtonTapped;
 @end

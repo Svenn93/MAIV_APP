@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MainView.h"
-#import "SleutelViewController.h"
 
 @interface MainViewController : UIViewController<MainViewDelegate>
 

@@ -11,10 +11,11 @@
 
 @interface MainView : UIView
 
-@property (nonatomic, strong)UILabel *lblToolTip;
-@property (nonatomic, strong)UIButton *btnBegeleider;
-@property (nonatomic, strong)UIButton *btnGroep;
+@property (nonatomic, strong)UIImageView *logoView;
+@property (nonatomic, strong)UIImageView *groepView;
+@property (nonatomic, strong)UIImageView *stadView;
+@property (nonatomic, strong)UIButton *startBtn;
 
 @property (nonatomic, weak) id<MainViewDelegate> delegate;
-
+- (void)doLogoAnimation;
 @end

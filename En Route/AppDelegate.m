@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "UIColor+EnRoute.h"
+#import "NavigationViewController.h"
 
 @implementation AppDelegate
 
@@ -20,10 +22,13 @@
     // Override point for customization after application launch.
     
     self.mainVC = [[MainViewController alloc]initWithNibName:nil bundle:nil];
-    UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:self.mainVC];
-    [navVC setNavigationBarHidden:YES];
+    NavigationViewController *navVC = [[NavigationViewController alloc]initWithRootViewController:self.mainVC];
     [self.window setRootViewController:navVC];
-    
+    navVC.navigationBar.barTintColor = [UIColor blueNavigationBarColor];
+    navVC.navigationBar.translucent = NO;
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

@@ -8,7 +8,7 @@
 
 #import "MainView.h"
 #import "LabelFactory.h"
-#import "Utils.h"
+#import "UIColor+EnRoute.h"
 
 @implementation MainView
 
@@ -16,50 +16,113 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        CGSize bestFrame = [Utils sizeInOrientation];
-        self.lblToolTip = [LabelFactory createLabelWithText:@"Klik links als je een begeleider bent, rechts als je een deelnemer bent."
-                           andXPos:bestFrame.width/2 - 125 andYPos:40 andWidth:250 andRotation:0 andFont:@"WhisperADream" andFontSize:20
-                           andKerning:[NSNumber numberWithInt:1] andLineHeight:1 andCentered:YES];
-        [self addSubview:self.lblToolTip];
-        [self setBackgroundColor:[UIColor colorWithRed:238/255.0f green:229/255.0f blue:206/255.f alpha:1]];
-        self.lblToolTip.textAlignment = NSTextAlignmentCenter;
+        [self setBackgroundColor:[UIColor paleBackgroundColor]];
+        UIImage *logo = [UIImage imageNamed:@"logo"];
+        self.logoView = [[UIImageView alloc]initWithImage:logo];
+        [self.logoView setFrame:CGRectMake((frame.size.width - logo.size.width)/2, frame.size.height, logo.size.width, logo.size.height)];
         
-        UIImage *image = [UIImage imageNamed:@"stad"];
-        UIImageView *bgImage = [[UIImageView alloc]initWithImage:image];
-        [bgImage setFrame:CGRectMake(0, bestFrame.height - image.size.height - 12, image.size.width, image.size.height)];
-        [self addSubview:bgImage];
+        UIImage *groepje = [UIImage imageNamed:@"groepje"];
+        self.groepView = [[UIImageView alloc]initWithImage:groepje];
+        [self.groepView setFrame:CGRectMake((frame.size.width - groepje.size.width)/2, 268, groepje.size.width, groepje.size.height)];
+        [self.groepView setAlpha:0];
         
-        UIImage *imgKeuze = [UIImage imageNamed:@"keuze"];
-        UIImageView *ivKeuze = [[UIImageView alloc]initWithImage:imgKeuze];
-        [ivKeuze setFrame:CGRectMake(193, 100, imgKeuze.size.width, imgKeuze.size.height)];
-        [self addSubview:ivKeuze];
+        UIImage *stad = [UIImage imageNamed:@"stad"];
+        self.stadView = [[UIImageView alloc]initWithImage:stad];
+        [self.stadView setFrame:CGRectMake((frame.size.width - stad.size.width)/2, frame.size.height - stad.size.height -5, stad.size.width, stad.size.height)];
+        [self.stadView setAlpha:0];
         
-        UIImage *imgBegeleider = [UIImage imageNamed:@"begeleider"];
-        UIImage *imgGroep = [UIImage imageNamed:@"groep"];
+        UIImage *startbtnimg = [UIImage imageNamed:@"startbtn"];
+        UIImage *startbtnimg2 = [UIImage imageNamed:@"startbtn_2"];
+        self.startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.startBtn setImage:startbtnimg forState:UIControlStateNormal];
+        [self.startBtn setImage:startbtnimg2 forState:UIControlStateHighlighted];
+        [self.startBtn setFrame:CGRectMake((frame.size.width - startbtnimg.size.width)/2, 464, startbtnimg.size.width, startbtnimg.size.height)];
+        [self.startBtn setAlpha:0];
         
-        self.btnBegeleider = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.btnBegeleider setBackgroundImage:imgBegeleider forState:UIControlStateNormal];
-        [self.btnBegeleider setFrame:CGRectMake(25, 51, imgBegeleider.size.width, imgBegeleider.size.height)];
-        [self.btnBegeleider addTarget:self action:@selector(begeleiderBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [self.startBtn addTarget:self action:@selector(startButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
-        self.btnGroep = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.btnGroep setBackgroundImage:imgGroep forState:UIControlStateNormal];
-        [self.btnGroep setFrame:CGRectMake(375, 50, imgGroep.size.width, imgGroep.size.height)];
+        [self addSubview:self.stadView];
+        [self addSubview:self.groepView];
+        [self addSubview:self.logoView];
+        [self addSubview:self.startBtn];
         
-        [self addSubview:self.btnBegeleider];
-        [self addSubview:self.btnGroep];
         
-        NSLog(@"De width van het frame: %f",bestFrame.width);
+        //PARALAX EFFECTS
+        UIInterpolatingMotionEffect *verticalMotionEffect = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        
+        UIInterpolatingMotionEffect *horizontalMotionEffect = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        horizontalMotionEffect.minimumRelativeValue = @(-10);
+        horizontalMotionEffect.maximumRelativeValue = @(10);
+        verticalMotionEffect.minimumRelativeValue = @(-10);
+        verticalMotionEffect.maximumRelativeValue = @(10);
+        
+        UIInterpolatingMotionEffect *verticalMotionEffect2 = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        
+        UIInterpolatingMotionEffect *horizontalMotionEffect2 = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        horizontalMotionEffect2.minimumRelativeValue = @(-15);
+        horizontalMotionEffect2.maximumRelativeValue = @(15);
+        verticalMotionEffect2.minimumRelativeValue = @(-15);
+        verticalMotionEffect2.maximumRelativeValue = @(15);
+        
+        UIInterpolatingMotionEffect *verticalMotionEffect3 = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        
+        UIInterpolatingMotionEffect *horizontalMotionEffect3 = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        horizontalMotionEffect3.minimumRelativeValue = @(-20);
+        horizontalMotionEffect3.maximumRelativeValue = @(20);
+        verticalMotionEffect3.minimumRelativeValue = @(-20);
+        verticalMotionEffect3.maximumRelativeValue = @(20);
+        
+            UIInterpolatingMotionEffect *verticalMotionEffect4 = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+        
+        UIInterpolatingMotionEffect *horizontalMotionEffect4 = [[UIInterpolatingMotionEffect alloc]initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+        horizontalMotionEffect4.minimumRelativeValue = @(-25);
+        horizontalMotionEffect4.maximumRelativeValue = @(25);
+        verticalMotionEffect4.minimumRelativeValue = @(-25);
+        verticalMotionEffect4.maximumRelativeValue = @(25);
+        
+        UIMotionEffectGroup *motionEffGroup = [UIMotionEffectGroup new];
+        motionEffGroup.motionEffects = @[verticalMotionEffect, horizontalMotionEffect];
+        
+        UIMotionEffectGroup *motionEffGroup2 = [UIMotionEffectGroup new];
+        motionEffGroup2.motionEffects = @[verticalMotionEffect2, horizontalMotionEffect2];
+        
+        UIMotionEffectGroup *motionEffGroup3 = [UIMotionEffectGroup new];
+        motionEffGroup3.motionEffects = @[verticalMotionEffect3, horizontalMotionEffect3];
+        
+        UIMotionEffectGroup *motionEffGroup4 = [UIMotionEffectGroup new];
+        motionEffGroup4.motionEffects = @[verticalMotionEffect4, horizontalMotionEffect4];
+        
+        [self.groepView addMotionEffect:motionEffGroup2];
+        [self.logoView addMotionEffect:motionEffGroup4];
+        [self.startBtn addMotionEffect:motionEffGroup3];
+        [self.stadView addMotionEffect:motionEffGroup];
     }
     return self;
 }
 
-- (void)begeleiderBtnTapped:(id)sender
+- (void)doLogoAnimation
 {
-    NSLog(@"Button tapped: %@", sender);
-    [self.delegate begeleiderButtonTapped];
+    CGRect logoFrame = self.logoView.frame;
+    [UIView animateWithDuration:1.5 animations:^{
+        [self.logoView setFrame:CGRectMake(logoFrame.origin.x, 50, logoFrame.size.width, logoFrame.size.height)];
+    } completion:^(BOOL finished) {
+        //fadein
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.groepView setAlpha:1];
+            [self.stadView setAlpha:1];
+        }];
+        
+        [UIView animateWithDuration:0.5 delay:0.2 options:0 animations:^{
+            [self.startBtn setAlpha:1];
+        } completion:^(BOOL finished) {
+        }];
+    }];
 }
 
+- (void)startButtonTapped:(id)sender
+{
+    [self.delegate startButtonTapped];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

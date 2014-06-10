@@ -23,6 +23,12 @@
     return self;
 }
 
+- (instancetype)initWithContext:(NSManagedObjectContext *)context
+{
+    self.context = context;
+    return [self initWithNibName:nil bundle:nil];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];

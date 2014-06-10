@@ -9,6 +9,8 @@
 #import "StraatKeuzeView.h"
 #import "UIView+EnRoute.h"
 #import "UIColor+EnRoute.h"
+#import "FadeScrollView.h"
+#import "StraatButton.h"
 
 @implementation StraatKeuzeView
 
@@ -25,6 +27,11 @@
         [self.activIndicator startAnimating];
         [self setBackgroundColor:[UIColor paleBackgroundColor]];
         
+        UIImage *stap1 = [UIImage imageNamed:@"stap1"];
+        UIImageView *stap1V = [[UIImageView alloc]initWithImage:stap1];
+        [stap1V setFrame:CGRectMake((frame.size.width - stap1.size.width)/2 , 0, stap1.size.width, stap1.size.height)];
+        [self addSubview:stap1V];
+        
         UIImage *image = [UIImage imageNamed:@"kaartman"];
         self.bgView = [[UIImageView alloc]initWithImage:image];
         [self.bgView setFrame:CGRectMake((frame.size.width - image.size.width)/2, frame.size.height - image.size.height - 64, image.size.width, image.size.height)];
@@ -36,27 +43,44 @@
 - (void)buildWithArray:(NSMutableArray *)array
 {
     CGRect frame = [[UIScreen mainScreen]bounds];
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, 235)];
+    FadeScrollView *scrollView = [[FadeScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, 372)];
     [self addSubview:scrollView];
     [self sendSubviewToBack:scrollView];
     [self.activIndicator stopAnimating];
-    int ypos = 20;
+    int ypos = 50;
     for(StraatData *straatdata in array)
     {
         
         UIImage *image = [UIImage imageNamed:@"straatbord"];
-        UIButton *straatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        StraatButton *straatBtn = [StraatButton buttonWithType:UIButtonTypeCustom];
         [straatBtn setBackgroundImage:image forState:UIControlStateNormal];
-        [straatBtn setFrame:CGRectMake((frame.size.width - image.size.width)/2, ypos, image.size.width, image.size.height)];
+        [straatBtn setFrame:CGRectMake((frame.size.width - image.size.width)/2 + 2, ypos, image.size.width, image.size.height)];
         [straatBtn setTitle:straatdata.straatnaam forState:UIControlStateNormal];
         [straatBtn.titleLabel setFont:[UIFont fontWithName:@"HalloSans" size:25]];
-        
+        [straatBtn addTarget:self action:@selector(straatPressedButton:) forControlEvents:UIControlEventTouchUpInside];
+        straatBtn.groepid = straatdata.groepid;
+        straatBtn.straatid =  straatdata.straatid;
+
         [scrollView addSubview:straatBtn];
         ypos += 76;
     }
-    
-    [scrollView setContentSize:(CGSizeMake(320, ypos))];
 
+    [scrollView setContentSize:(CGSizeMake(320, ypos + 110))];
+
+    
+    UIImage *bgImage = [UIImage imageNamed:@"eendje_wolk"];
+    UIImageView *eendView = [[UIImageView alloc]initWithImage:bgImage];
+    [eendView setFrame:CGRectMake(0, 0, bgImage.size.width, bgImage.size.height)];
+    [self addSubview:eendView];
+    [self sendSubviewToBack:eendView];
+}
+
+- (void)straatPressedButton:(id)sender
+{
+    //FIXEN
+    StraatButton *pressedButton = (StraatButton *)sender;
+    NSLog(@"De gekozen groep is: %d", (int)pressedButton.tag);
+    [self.delegate straatSelectedVoorId:pressedButton.straatid andVoorGroep:pressedButton.groepid];
 }
 
 /*

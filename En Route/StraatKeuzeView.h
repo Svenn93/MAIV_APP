@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "StraatData.h"
+#import "StraatKeuzeViewDelegate.h"
 
 @interface StraatKeuzeView : UIView
 @property (nonatomic, strong)UIActivityIndicatorView *activIndicator;
 @property (nonatomic, strong)UIImageView *bgView;
 - (void)buildWithArray:(NSMutableArray *)array;
+
+@property (nonatomic, weak) id<StraatKeuzeViewDelegate> delegate;
 @end

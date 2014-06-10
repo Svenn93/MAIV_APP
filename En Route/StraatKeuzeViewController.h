@@ -10,8 +10,13 @@
 #import "StraatFactory.h"
 #import "StraatData.h"
 #import "StraatKeuzeView.h"
+#import "StraatKeuzeViewDelegate.h"
+#import "MainViewController.h"
+#import "Gebouw.h"
 
-@interface StraatKeuzeViewController : UIViewController
+@interface StraatKeuzeViewController : UIViewController<StraatKeuzeViewDelegate>
 @property (nonatomic, strong)NSMutableArray *arrStraten;
 @property (nonatomic, strong)StraatKeuzeView *customView;
+
+@property (nonatomic, strong) NSManagedObjectContext *context;
 @end

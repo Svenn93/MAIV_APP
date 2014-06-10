@@ -10,5 +10,7 @@
 #import "MainView.h"
 
 @interface MainViewController : UIViewController<MainViewDelegate>
+@property (nonatomic, strong)NSManagedObjectContext *context;
 
+- (instancetype)initWithContext:(NSManagedObjectContext *)context;
 @end

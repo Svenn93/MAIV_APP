@@ -37,6 +37,15 @@
 		26A393ED194070510029D410 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393EC194070510029D410 /* NavigationViewController.m */; };
 		26A393F019408D6B0029D410 /* StraatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393EF19408D6B0029D410 /* StraatData.m */; };
 		26A393F619408EAE0029D410 /* StraatFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393F519408EAE0029D410 /* StraatFactory.m */; };
+		26A393F91941C37D0029D410 /* FadeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393F81941C37D0029D410 /* FadeScrollView.m */; };
+		26A393FD1945E0820029D410 /* GroepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A393FC1945E0820029D410 /* GroepViewController.m */; };
+		26A39406194652940029D410 /* GroepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A39405194652940029D410 /* GroepView.m */; };
+		26A3940A1946E7190029D410 /* MPChandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A394091946E7190029D410 /* MPChandler.m */; };
+		26A3940D19470A040029D410 /* Gebouw.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3940C19470A040029D410 /* Gebouw.m */; };
+		26A39410194725FF0029D410 /* StraatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3940F194725FF0029D410 /* StraatButton.m */; };
+		26A39413194728270029D410 /* GebouwData.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A39412194728270029D410 /* GebouwData.m */; };
+		26A39416194728FD0029D410 /* GebouwFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A39415194728FD0029D410 /* GebouwFactory.m */; };
+		26A3941A19474ED40029D410 /* IndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3941919474ED40029D410 /* IndicatorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +108,26 @@
 		26A393EF19408D6B0029D410 /* StraatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraatData.m; sourceTree = "<group>"; };
 		26A393F419408EAE0029D410 /* StraatFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraatFactory.h; sourceTree = "<group>"; };
 		26A393F519408EAE0029D410 /* StraatFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraatFactory.m; sourceTree = "<group>"; };
+		26A393F71941C37D0029D410 /* FadeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeScrollView.h; sourceTree = "<group>"; };
+		26A393F81941C37D0029D410 /* FadeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FadeScrollView.m; sourceTree = "<group>"; };
+		26A393FA1945D9AE0029D410 /* StraatKeuzeViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraatKeuzeViewDelegate.h; sourceTree = "<group>"; };
+		26A393FB1945E0820029D410 /* GroepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroepViewController.h; sourceTree = "<group>"; };
+		26A393FC1945E0820029D410 /* GroepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroepViewController.m; sourceTree = "<group>"; };
+		26A39404194652940029D410 /* GroepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroepView.h; sourceTree = "<group>"; };
+		26A39405194652940029D410 /* GroepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroepView.m; sourceTree = "<group>"; };
+		26A394081946E7190029D410 /* MPChandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPChandler.h; sourceTree = "<group>"; };
+		26A394091946E7190029D410 /* MPChandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPChandler.m; sourceTree = "<group>"; };
+		26A3940B19470A040029D410 /* Gebouw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gebouw.h; sourceTree = "<group>"; };
+		26A3940C19470A040029D410 /* Gebouw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gebouw.m; sourceTree = "<group>"; };
+		26A3940E194725FF0029D410 /* StraatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraatButton.h; sourceTree = "<group>"; };
+		26A3940F194725FF0029D410 /* StraatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraatButton.m; sourceTree = "<group>"; };
+		26A39411194728270029D410 /* GebouwData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GebouwData.h; sourceTree = "<group>"; };
+		26A39412194728270029D410 /* GebouwData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GebouwData.m; sourceTree = "<group>"; };
+		26A39414194728FD0029D410 /* GebouwFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GebouwFactory.h; sourceTree = "<group>"; };
+		26A39415194728FD0029D410 /* GebouwFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GebouwFactory.m; sourceTree = "<group>"; };
+		26A3941819474ED40029D410 /* IndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorView.h; sourceTree = "<group>"; };
+		26A3941919474ED40029D410 /* IndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorView.m; sourceTree = "<group>"; };
+		26A3941B1947804C0029D410 /* GroepViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroepViewDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,12 +159,6 @@
 		260CE090193C530200EA843C = {
 			isa = PBXGroup;
 			children = (
-				26A393E8194064C80029D410 /* UIView+EnRoute.h */,
-				26A393E9194064C80029D410 /* UIView+EnRoute.m */,
-				2692FDFB193F8CA700C738C8 /* UIViewController+PortraitViewController.h */,
-				2692FDFC193F8CA700C738C8 /* UIViewController+PortraitViewController.m */,
-				2692FDED193F489C00C738C8 /* UIColor+EnRoute.h */,
-				2692FDEE193F489C00C738C8 /* UIColor+EnRoute.m */,
 				260CE0A4193C530200EA843C /* En Route */,
 				260CE0C1193C530300EA843C /* En RouteTests */,
 				260CE09B193C530200EA843C /* Frameworks */,
@@ -167,17 +190,26 @@
 		260CE0A4193C530200EA843C /* En Route */ = {
 			isa = PBXGroup;
 			children = (
-				26A393F219408E5D0029D410 /* Factories */,
 				260CE0AD193C530200EA843C /* AppDelegate.h */,
 				260CE0AE193C530300EA843C /* AppDelegate.m */,
-				26A393F119408D750029D410 /* DataObjects */,
 				260CE0B3193C530300EA843C /* Images.xcassets */,
+				26A3940B19470A040029D410 /* Gebouw.h */,
+				26A3940C19470A040029D410 /* Gebouw.m */,
 				260CE0B0193C530300EA843C /* En_Route.xcdatamodeld */,
 				260CE0A5193C530200EA843C /* Supporting Files */,
 				260CE0D5193C56BE00EA843C /* ViewControllers */,
 				260CE0D4193C56B100EA843C /* Views */,
+				26A394071946E60D0029D410 /* Categories */,
+				26A393F219408E5D0029D410 /* Factories */,
+				26A393F119408D750029D410 /* DataObjects */,
 				260CE0DF193C6DEC00EA843C /* Utils.h */,
 				260CE0E0193C6DEC00EA843C /* Utils.m */,
+				26A394081946E7190029D410 /* MPChandler.h */,
+				26A394091946E7190029D410 /* MPChandler.m */,
+				26A3940E194725FF0029D410 /* StraatButton.h */,
+				26A3940F194725FF0029D410 /* StraatButton.m */,
+				26A3941819474ED40029D410 /* IndicatorView.h */,
+				26A3941919474ED40029D410 /* IndicatorView.m */,
 			);
 			path = "En Route";
 			sourceTree = "<group>";
@@ -223,6 +255,12 @@
 				26A393DE194049760029D410 /* UitlegViewDelegate.h */,
 				26A393DF19405E320029D410 /* StraatKeuzeView.h */,
 				26A393E019405E320029D410 /* StraatKeuzeView.m */,
+				26A393FA1945D9AE0029D410 /* StraatKeuzeViewDelegate.h */,
+				26A393F71941C37D0029D410 /* FadeScrollView.h */,
+				26A393F81941C37D0029D410 /* FadeScrollView.m */,
+				26A39404194652940029D410 /* GroepView.h */,
+				26A39405194652940029D410 /* GroepView.m */,
+				26A3941B1947804C0029D410 /* GroepViewDelegate.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -238,6 +276,8 @@
 				26A393DC1940484C0029D410 /* StraatKeuzeViewController.m */,
 				26A393EB194070510029D410 /* NavigationViewController.h */,
 				26A393EC194070510029D410 /* NavigationViewController.m */,
+				26A393FB1945E0820029D410 /* GroepViewController.h */,
+				26A393FC1945E0820029D410 /* GroepViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +296,8 @@
 			children = (
 				26A393EE19408D6B0029D410 /* StraatData.h */,
 				26A393EF19408D6B0029D410 /* StraatData.m */,
+				26A39411194728270029D410 /* GebouwData.h */,
+				26A39412194728270029D410 /* GebouwData.m */,
 			);
 			name = DataObjects;
 			sourceTree = "<group>";
@@ -265,6 +307,7 @@
 			children = (
 				26A393F319408E6B0029D410 /* StraatFactory */,
 				260CE0DC193C599200EA843C /* LabelFactory */,
+				26A39417194729040029D410 /* Gebouwfactory */,
 			);
 			name = Factories;
 			sourceTree = "<group>";
@@ -276,6 +319,29 @@
 				26A393F519408EAE0029D410 /* StraatFactory.m */,
 			);
 			name = StraatFactory;
+			sourceTree = "<group>";
+		};
+		26A394071946E60D0029D410 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				26A393E8194064C80029D410 /* UIView+EnRoute.h */,
+				26A393E9194064C80029D410 /* UIView+EnRoute.m */,
+				2692FDFB193F8CA700C738C8 /* UIViewController+PortraitViewController.h */,
+				2692FDFC193F8CA700C738C8 /* UIViewController+PortraitViewController.m */,
+				2692FDED193F489C00C738C8 /* UIColor+EnRoute.h */,
+				2692FDEE193F489C00C738C8 /* UIColor+EnRoute.m */,
+			);
+			name = Categories;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		26A39417194729040029D410 /* Gebouwfactory */ = {
+			isa = PBXGroup;
+			children = (
+				26A39414194728FD0029D410 /* GebouwFactory.h */,
+				26A39415194728FD0029D410 /* GebouwFactory.m */,
+			);
+			name = Gebouwfactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,20 +444,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				26A393F619408EAE0029D410 /* StraatFactory.m in Sources */,
+				26A393F91941C37D0029D410 /* FadeScrollView.m in Sources */,
 				26A393F019408D6B0029D410 /* StraatData.m in Sources */,
 				26A393DD1940484C0029D410 /* StraatKeuzeViewController.m in Sources */,
+				26A3940D19470A040029D410 /* Gebouw.m in Sources */,
 				26A393E119405E320029D410 /* StraatKeuzeView.m in Sources */,
 				26A393ED194070510029D410 /* NavigationViewController.m in Sources */,
 				260CE0D8193C56DF00EA843C /* MainView.m in Sources */,
 				26A393EA194064C80029D410 /* UIView+EnRoute.m in Sources */,
 				2692FDF5193F5E3300C738C8 /* UitlegView.m in Sources */,
+				26A39413194728270029D410 /* GebouwData.m in Sources */,
 				2692FDFD193F8CA700C738C8 /* UIViewController+PortraitViewController.m in Sources */,
+				26A3941A19474ED40029D410 /* IndicatorView.m in Sources */,
 				260CE0AF193C530300EA843C /* AppDelegate.m in Sources */,
+				26A393FD1945E0820029D410 /* GroepViewController.m in Sources */,
 				260CE0B2193C530300EA843C /* En_Route.xcdatamodeld in Sources */,
+				26A39406194652940029D410 /* GroepView.m in Sources */,
 				260CE0AB193C530200EA843C /* main.m in Sources */,
 				260CE0D3193C534F00EA843C /* MainViewController.m in Sources */,
 				260CE0E1193C6DEC00EA843C /* Utils.m in Sources */,
+				26A39410194725FF0029D410 /* StraatButton.m in Sources */,
 				2692FDEF193F489C00C738C8 /* UIColor+EnRoute.m in Sources */,
+				26A39416194728FD0029D410 /* GebouwFactory.m in Sources */,
+				26A3940A1946E7190029D410 /* MPChandler.m in Sources */,
 				2692FDF2193F5E1B00C738C8 /* UitlegViewController.m in Sources */,
 				260CE0DB193C598D00EA843C /* LabelFactory.m in Sources */,
 			);

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
+#import "MPChandler.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,6 +19,8 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic, strong) MainViewController *mainVC;
+
+@property (nonatomic, strong) MPChandler *mpcHandler;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

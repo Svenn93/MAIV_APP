@@ -30,7 +30,7 @@
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window setBackgroundColor:[UIColor blueNavigationBarColor]];
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -10,5 +10,5 @@
 
 @protocol GroepViewDelegate <NSObject>
 @required
--(void)gebouwSelectedMetId:(int)gebouwid;
+-(void)gebouwSelectedMetId:(int)gebouwid andCountUp:(BOOL)countup;
 @end

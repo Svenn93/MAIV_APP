@@ -17,8 +17,10 @@
     if (self) {
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
-
+        self.clipsToBounds = YES
+        ;
         self.aantal = 0;
+        self.frame = frame;
     }
     return self;
 }
@@ -32,24 +34,37 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    [[self subviews]makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClearRect(context,rect);
     int xpos = 1;
+    
     for (int i = 1; i <= self.maxaantal; i++) {
         CGRect borderRect = CGRectMake(xpos, 1.0, 12.0, 12.0);
-        CGContextSetRGBStrokeColor(context, 51/255.0f, 188/255.0f, 214/255.0f, 1.0);
-        if(i <= self.aantal)
+
+        if(self.aantal == self.maxaantal)
         {
-            CGContextSetRGBFillColor(context, 51/255.0f, 188/255.0f, 214/255.0f, 1.0);
+            CGContextSetRGBStrokeColor(context, 215/255.0f, 87/255.0f, 82/255.0f, 1.0);
+            CGContextSetRGBFillColor(context, 215/255.0f, 87/255.0f, 82/255.0f, 1.0);
+        
         }else{
-            CGContextSetRGBFillColor(context, 238/255.0f, 229/255.0f, 204/255.0f, 1.0);
+        
+            CGContextSetRGBStrokeColor(context, 51/255.0f, 188/255.0f, 214/255.0f, 1.0);
+            if(i <= self.aantal)
+            {
+                CGContextSetRGBFillColor(context, 51/255.0f, 188/255.0f, 214/255.0f, 1.0);
+            }else{
+                CGContextSetRGBFillColor(context, 238/255.0f, 229/255.0f, 204/255.0f, 1.0);
+            }
         }
         CGContextSetLineWidth(context, 2.0);
         CGContextFillEllipseInRect (context, borderRect);
         CGContextStrokeEllipseInRect(context, borderRect);
         CGContextFillPath(context);
         xpos += 17;
+        
     }
+    
 }
 
 @end

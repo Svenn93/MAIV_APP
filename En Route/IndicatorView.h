@@ -12,5 +12,6 @@
 @property (nonatomic)int maxaantal;
 @property (nonatomic)int aantal;
 @property (nonatomic)int gebouwid;
+@property (nonatomic)CGRect frame;
 -(instancetype)initWithFrame:(CGRect)frame andMaxAantal:(int)maxaantal andGebouwid:(int)gebouwid;
 @end

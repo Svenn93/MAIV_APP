@@ -10,6 +10,8 @@
 #import "UIViewController+PortraitViewController.h"
 #import "Utils.h"
 #import "GebouwFactory.h"
+#import "WachtViewController.h"
+#import "AppDelegate.h"
 
 @interface GroepViewController ()
 
@@ -23,6 +25,7 @@ static NSString * const EnRouteServiceType = @"be.enroute.build";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.firstTime = YES;
         // Custom initialization
         [self setUpImageBackButton];
         UIImage *titleImage = [UIImage imageNamed:@"kiesJeGroep"];
@@ -38,12 +41,9 @@ static NSString * const EnRouteServiceType = @"be.enroute.build";
                 //eventueel errormessage voorzien
                 NSLog(@"Er is een error %@", connectionError);
             }else{
-                NSLog(@"Tis gelukt");
                 NSError *jsonError = nil;
                 NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-                
-                NSLog(@"De loadeddata: %@", loadedData);
-                
+
                 if(jsonError)
                 {
                     //eventueel errormessage voorzien
@@ -53,10 +53,13 @@ static NSString * const EnRouteServiceType = @"be.enroute.build";
                     NSLog(@"Het aantal deelnemers: %@", [dict objectForKey:@"aantal_deelnemers"]);
                     self.aantaldeelnemers = [[dict objectForKey:@"aantal_deelnemers"]intValue];
                     [self getGebouwen];
-                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(onTick:) userInfo:nil repeats:YES];
+                    });
                 }
             }
         }];
+        
 
 
     }
@@ -70,36 +73,45 @@ static NSString * const EnRouteServiceType = @"be.enroute.build";
     return [self initWithNibName:nil bundle:nil];
 }
 
+- (void)onTick:(id)sender
+{
+    [self getGebouwen];
+}
+
 - (void)getGebouwen
 {
-    
+    NSLog(@"Get gebouwen wordt opgeroepen: ");
     NSString *path = [NSString stringWithFormat:@"%@gebouwen/%d", apiurl, self.straatid];
     NSURL *url = [NSURL URLWithString:path];
     
-    NSLog(@"het path is: %@", path);
-
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0] queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(connectionError){
             //eventueel errormessage voorzien
             NSLog(@"Er is een error %@", connectionError);
         }else{
-            NSLog(@"Tis gelukt");
             NSError *jsonError = nil;
             NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-            
-            NSLog(@"De loadeddata: %@", loadedData);
-            
+        
             if(jsonError)
             {
                 //eventueel errormessage voorzien
                 NSLog(@"De json is slecht");
             }else{
-                self.arrGebouwen = [NSMutableArray array];
+                dispatch_async(dispatch_get_main_queue(), ^{
+
+                    self.arrGebouwen = [NSMutableArray array];
                 
-                for (NSDictionary *dict in loadedData) {
-                    [self.arrGebouwen addObject:[GebouwFactory createGebouwWithDictionary:dict]];
-                }
-                [self buildView];
+                    for (NSDictionary *dict in loadedData) {
+                        [self.arrGebouwen addObject:[GebouwFactory createGebouwWithDictionary:dict]];
+                    }
+                    if(self.firstTime)
+                    {
+                        [self buildView];
+                        self.firstTime = false;
+                    }else{
+                        [(GroepView *)self.view updateViewsWithArray:self.arrGebouwen];
+                    }
+                    });
             }
         }
     }];
@@ -108,7 +120,6 @@ static NSString * const EnRouteServiceType = @"be.enroute.build";
 - (void)buildView
 {
     NSLog(@"Json ingeladen, build de view");
-    
     //insert gebouwen
     
     if(self.customview)
@@ -127,23 +138,19 @@ static NSString * const EnRouteServiceType = @"be.enroute.build";
     [self setView:self.customview];
 }
 
--(void) gebouwSelectedMetId:(int)gebouwid
+-(void)gebouwSelectedMetId:(int)gebouwid andCountUp:(BOOL)countup
 {
-    /*NSString *path = [NSString stringWithFormat:@"%@deelnemers/", apiurl];
+    NSString *path = [NSString stringWithFormat:@"%@gebouw/%d", apiurl, gebouwid];
     NSURL *url = [NSURL URLWithString:path];
     NSMutableURLRequest *request = [NSURLRequest requestWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:[NSString stringWithFormat:@"gebouwid=%d&deelnemers=%d", gebouwid]];
+
     [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(connectionError){
             //eventueel errormessage voorzien
             NSLog(@"Er is een error %@", connectionError);
         }else{
-            NSLog(@"Tis gelukt");
             NSError *jsonError = nil;
             NSArray *loadedData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-            
             NSLog(@"De loadeddata: %@", loadedData);
             
             if(jsonError)
@@ -152,21 +159,96 @@ static NSString * const EnRouteServiceType = @"be.enroute.build";
                 NSLog(@"De json is slecht");
             }else{
                 NSDictionary *dict = [loadedData objectAtIndex:0];
-                NSLog(@"Het aantal deelnemers: %@", [dict objectForKey:@"aantal_deelnemers"]);
-                self.aantaldeelnemers = [[dict objectForKey:@"aantal_deelnemers"]intValue];
-                [self getGebouwen];
+                int deelnemers = [[dict objectForKey:@"deelnemers"]intValue];
+                int deelnemers_max = [[dict objectForKey:@"deelnemers_max"]intValue];
                 
+                NSLog(@"Het gebouw heeft al %d van de %d deelnemers.", deelnemers, deelnemers_max);
+                
+                if (countup && deelnemers < deelnemers_max) {
+                    [self updateAantalDeelnemersInGebouwMetId:gebouwid enAantalDeelnemers:deelnemers+1 enCountUp:YES];
+                }else if(!countup){
+                    [self updateAantalDeelnemersInGebouwMetId:gebouwid enAantalDeelnemers:deelnemers-1 enCountUp:NO];
+                    
+                }
             }
         }
-    }];*/
+    }];
+}
 
+-(void)updateAantalDeelnemersInGebouwMetId:(int)gebouwid enAantalDeelnemers:(int)aantalDeelnemers enCountUp:(BOOL)countup
+{
+    
+    NSString *path = [NSString stringWithFormat:@"%@deelnemers/update/%d", apiurl, gebouwid];
+    NSURL *url = [NSURL URLWithString:path];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"POST"];
+    NSString *postString = [NSString stringWithFormat:@"deelnemers=%d", aantalDeelnemers];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(connectionError){
+            //eventueel errormessage voorzien
+            NSLog(@"Er is een error %@", connectionError);
+        }else{
+            NSError *jsonError = nil;
+            NSDictionary *loadedData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+            NSLog(@"De loaded data met de responsecode: %@", loadedData);
+            if(jsonError)
+            {
+                
+            }else{
+                NSString *responseCode = [loadedData valueForKey:@"responsecode"];
+                
+                if([responseCode isEqualToString:@"ok"])
+                {
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+                    [appDelegate.mpcHandler setupPeerWithDisplayName:[UIDevice currentDevice].name];
+                    if(aantalDeelnemers == 1)
+                    {
+                        appDelegate.mpcHandler.shouldInvite = YES;
+                    }else{
+                        appDelegate.mpcHandler.shouldInvite = NO;
+                    }
+
+                    //inladen nieuwe vieuwcontroller
+                    self.lastChosenGebouwId = gebouwid;
+                    
+                    if (countup) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            WachtViewController *vc = [[WachtViewController alloc]initMetGebouwid:self.lastChosenGebouwId];
+                            [self.navigationController pushViewController:vc animated:YES];
+                        });
+                    }
+                    
+                }
+            }
+        }
+    }];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.timer invalidate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [(GroepView *)self.view setButtonInteractionEnabled];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (!self.firstTime) {
+
+        [self gebouwSelectedMetId:self.lastChosenGebouwId andCountUp:NO];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(onTick:) userInfo:nil repeats:YES];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
     // Do any additional setup after loading the view.
 }
 

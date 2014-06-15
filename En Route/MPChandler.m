@@ -15,32 +15,71 @@
 }
 
 - (void)setupSession {
-    self.session = [[MCSession alloc] initWithPeer:self.peerID];
-    self.session.delegate = self;
+    self.browserSession = [[MCSession alloc] initWithPeer:self.peerID];
+    self.browserSession.delegate = self;
 }
 
 - (void)setupBrowser {
-    self.browser = [[MCBrowserViewController alloc] initWithServiceType:@"my-game" session:_session];
+    self.browser = [[MCNearbyServiceBrowser alloc]initWithPeer:self.peerID serviceType:@"my-game"];
+    self.browser.delegate = self;
+    [self.browser startBrowsingForPeers];
+    NSLog(@"START BROWSING");
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showSession) userInfo:nil repeats:YES];
+}
+
+- (void)showSession
+{
+    NSLog(@"DE SESSION: %@, %@", self.browserSession.connectedPeers, self.advertiseSession.connectedPeers);
 }
 
 - (void)advertiseSelf:(BOOL)advertise {
     if (advertise) {
-        self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:@"my-game" discoveryInfo:nil session:self.session];
-        [self.advertiser start];
+        self.advertiser = [[MCNearbyServiceAdvertiser alloc]initWithPeer:self.peerID discoveryInfo:nil serviceType:@"my-game"];
+        [self.advertiser startAdvertisingPeer];
+        self.advertiser.delegate = self;
         
     } else {
-        [self.advertiser stop];
+        [self.advertiser stopAdvertisingPeer];
         self.advertiser = nil;
+    }
+}
+
+-(void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL, MCSession *))invitationHandler
+{
+    invitationHandler(YES, self.browserSession);
+}
+
+- (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
+{
+    NSLog(@"Lost connection");
+}
+
+- (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error
+{
+    NSLog( @"Unable to start browsing for peers. Error: %@", error );
+}
+
+- (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
+{
+    NSLog(@"Browser found peer ID %@ en session %@",peerID.displayName, self.browserSession);
+        if(self.shouldInvite)
+    {
+        [browser invitePeer:peerID toSession:self.browserSession withContext:nil timeout:30.0];
     }
 }
 
 //wordt opgeroepen wanneer de state van de peer veranderd: connected, connecting, not connected
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state {
     NSDictionary *userInfo = @{ @"peerID": peerID, @"state" : @(state) };
-    
+    NSLog(@"De userinfo: %@", userInfo);
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MPCDemo_DidChangeStateNotification" object:nil userInfo:userInfo];
     });
+}
+
+- (void) session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL accept))certificateHandler
+{
+    certificateHandler(YES);
 }
 
 //wanneer de peer data binnenkrijgt 

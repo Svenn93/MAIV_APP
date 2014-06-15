@@ -14,6 +14,9 @@
 @property (nonatomic)int straatid;
 @property (nonatomic, strong)GroepView *customview;
 @property (nonatomic, strong)NSMutableArray *arrGebouwen;
+@property (nonatomic) BOOL firstTime;
+@property (nonatomic, strong)NSTimer *timer;
+@property (nonatomic)int lastChosenGebouwId;
 -(instancetype)initWithGroep:(int)groepid andStraatid:(int)straatid;
 @property (nonatomic)int aantaldeelnemers;
 @end

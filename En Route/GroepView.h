@@ -14,6 +14,9 @@
 @property (nonatomic, strong)UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong)UIScrollView *scrollView;
 @property (nonatomic, strong)NSMutableArray *arrIndicators;
--(void)buildViewWithGebouwenAlsGroepen:(NSMutableArray *)arrGroepen;
+@property (nonatomic, strong)NSMutableArray *arrButtons;
+- (void)buildViewWithGebouwenAlsGroepen:(NSMutableArray *)arrGroepen;
+- (void)updateViewsWithArray:(NSMutableArray *)arrGroepen;
 @property (nonatomic, weak) id<GroepViewDelegate> delegate;
+-(void)setButtonInteractionEnabled;
 @end

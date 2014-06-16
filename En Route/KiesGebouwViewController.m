@@ -7,7 +7,6 @@
 //
 
 #import "KiesGebouwViewController.h"
-#import "KiesGebouwView.h"
 #import "AppDelegate.h"
 #import "ConnectieViewController.h"
 
@@ -49,11 +48,22 @@
     return self;
 }
 
+- (instancetype)initWithGebouwid:(int)gebouwid
+{
+    self.gebouwid = gebouwid;
+    return [self initWithNibName:nil bundle:nil];
+}
+
 - (void)showConnectionScreen
 {
     NSLog(@"SHOW CONNECTION SCREEN");
     ConnectieViewController *connectieVC = [[ConnectieViewController alloc]initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:connectieVC animated:YES];
+}
+
+- (void)outlineGekozen:(int)outlineid
+{
+    NSLog(@"Outline gekozen");
 }
 
 - (void)loadView
@@ -63,12 +73,14 @@
     NSLog(@"De rootvc: %@", rootVC);
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    [appDelegate.mpcHandler setupServiceType:[NSString stringWithFormat:@"enroute-%d", self.gebouwid]];
     [appDelegate.mpcHandler setupPeerWithDisplayName:[UIDevice currentDevice].name];
     [appDelegate.mpcHandler advertiseSelf:YES];
     [appDelegate.mpcHandler setupSession];
     [appDelegate.mpcHandler setupBrowser];
     CGRect frame = [[UIScreen mainScreen]bounds];
     KiesGebouwView *v = [[KiesGebouwView alloc]initWithFrame:frame andOutlines:self.arrOutlines];
+    v.delegate = self;
     [self setView:v];
 }
 

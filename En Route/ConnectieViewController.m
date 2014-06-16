@@ -39,7 +39,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peerDidChangeState:) name:@"peerDidChangeState" object:nil];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"peerDidChangeState" object:nil];
+}
+
+- (void)peerDidChangeState: (NSNotification *)notification
+{
+    NSLog(@"De peer did change zijne state ze manneke: %@", notification);
+    [(ConnectieView *)self.view updatePeers];
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KiesGebouwView.h"
 
-@interface KiesGebouwViewController : UIViewController
+@interface KiesGebouwViewController : UIViewController<KiesGebouwViewDelegate>
 @property (nonatomic, strong)NSMutableArray *arrOutlines;
+@property (nonatomic)int gebouwid;
+@property (nonatomic)int outlineid;
+- (instancetype)initWithGebouwid:(int)gebouwid;
 @end

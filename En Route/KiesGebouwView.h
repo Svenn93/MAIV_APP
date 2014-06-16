@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ClipView.h"
+#import "KiesGebouwViewDelegate.h"
 
 @interface KiesGebouwView : UIView
 @property (nonatomic, strong)UIScrollView *scrollview;
 @property (nonatomic, strong)ClipView *clipview;
 @property (nonatomic, strong)NSMutableArray *arrOutlines;
 - (instancetype)initWithFrame:(CGRect)frame andOutlines:(NSMutableArray *)outlines;
+@property (nonatomic, weak) id<KiesGebouwViewDelegate> delegate;
 @end

@@ -17,7 +17,8 @@
 @property (nonatomic, strong) MCNearbyServiceAdvertiser *advertiser;
 @property (nonatomic, strong) NSArray *ArrayInvitationhandler;
 @property (nonatomic)BOOL shouldInvite;
-
+@property (nonatomic, strong) NSString *servicetype;
+- (void)setupServiceType:(NSString *)servicetype;
 - (void)setupPeerWithDisplayName:(NSString *)displayName;
 - (void)setupSession;
 - (void)setupBrowser;

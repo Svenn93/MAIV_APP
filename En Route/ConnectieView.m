@@ -24,7 +24,6 @@
         [self addSubview:bgView];
         [self setBackgroundColor:[UIColor paleBackgroundColor]];
         [self updatePeers];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peerDidChangeState:) name:@"peerDidChangeState" object:nil];
     }
     return self;
 }
@@ -33,25 +32,33 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     NSArray *arrConnPeers = (NSArray *)(MPChandler *)appDelegate.mpcHandler.browserSession.connectedPeers;
-    
-    int yPos = 100;
-    for(int i = 0; i<[arrConnPeers count]; i++)
+    NSLog(@"[CONNECTIEVIEW] arrConnPeers: %@", arrConnPeers);
+    if([arrConnPeers count] > 0)
     {
-        NSLog(@"Connected peer: %@", arrConnPeers[i]);
-        UIImage *imageLabel = [UIImage imageNamed:@"labelBg"];
-        UILabel *lbl = [[UILabel alloc]initWithFrame:CGRectMake(35, yPos, imageLabel.size.width, imageLabel.size.height)];
-        MCPeerID *peerID = (MCPeerID *)(arrConnPeers[i]);
-        [lbl setBackgroundColor:[UIColor colorWithPatternImage:imageLabel]];
-        [lbl setText: peerID.displayName];
-        [self addSubview:lbl];
-        yPos += 77;
+        int yPos = 100;
+        for(int i = 0; i<[arrConnPeers count]; i++)
+        {
+            NSLog(@"Connected peer: %@", arrConnPeers[i]);
+            UIImage *imageLabel = [UIImage imageNamed:@"labelBg"];
+            UILabel *lbl = [[UILabel alloc]initWithFrame:CGRectMake(35, yPos, imageLabel.size.width, imageLabel.size.height)];
+            [lbl setTextAlignment:NSTextAlignmentCenter];
+            MCPeerID *peerID = (MCPeerID *)(arrConnPeers[i]);
+            [lbl setBackgroundColor:[UIColor colorWithPatternImage:imageLabel]];
+            [lbl setText: peerID.displayName];
+            [lbl setFont:[UIFont fontWithName:@"HalloSans" size:20]];
+            [lbl setTextColor:[UIColor whiteColor]];
+            [self addSubview:lbl];
+            
+            
+            UIImage *imageCheck = [UIImage imageNamed:@"check"];
+            UIImageView *checkView = [[UIImageView alloc]initWithImage:imageCheck];
+            [checkView setFrame:CGRectMake(234, yPos, imageCheck.size.width, imageCheck.size.height)];
+            [self addSubview:checkView];
+            yPos += 77;
+        }
     }
-}
-
-- (void)peerDidChangeState: (NSNotification *)notification
-{
-    NSLog(@"Notification: %@", notification);
-    [self updatePeers];
+    
+    
 }
 
 /*

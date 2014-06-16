@@ -19,8 +19,13 @@
     self.browserSession.delegate = self;
 }
 
+- (void)setupServiceType:(NSString *)servicetype
+{
+    self.servicetype = servicetype;
+}
+
 - (void)setupBrowser {
-    self.browser = [[MCNearbyServiceBrowser alloc]initWithPeer:self.peerID serviceType:@"my-game"];
+    self.browser = [[MCNearbyServiceBrowser alloc]initWithPeer:self.peerID serviceType:self.servicetype];
     self.browser.delegate = self;
     [self.browser startBrowsingForPeers];
     NSLog(@"START BROWSING");
@@ -34,7 +39,7 @@
 
 - (void)advertiseSelf:(BOOL)advertise {
     if (advertise) {
-        self.advertiser = [[MCNearbyServiceAdvertiser alloc]initWithPeer:self.peerID discoveryInfo:nil serviceType:@"my-game"];
+        self.advertiser = [[MCNearbyServiceAdvertiser alloc]initWithPeer:self.peerID discoveryInfo:nil serviceType:self.servicetype];
         [self.advertiser startAdvertisingPeer];
         self.advertiser.delegate = self;
         
@@ -76,6 +81,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"peerDidChangeState" object:nil userInfo:userInfo];
     });
 }
+
 
 - (void) session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL accept))certificateHandler
 {

@@ -64,6 +64,7 @@
 - (void)kiesBtnTapped:(id)sender
 {
     NSLog(@"Kies button tapped %@", [self.clipview.arrOutlines objectAtIndex:self.clipview.currentPage]);
+    [self.delegate outlineGekozen:self.clipview.currentPage];
     
 }
 

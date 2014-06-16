@@ -152,6 +152,7 @@
 		26E0788B194D94F0003C3BD7 /* ConnectieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectieViewController.m; sourceTree = "<group>"; };
 		26E0788E194D9506003C3BD7 /* ConnectieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectieView.h; sourceTree = "<group>"; };
 		26E0788F194D9506003C3BD7 /* ConnectieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectieView.m; sourceTree = "<group>"; };
+		26E07891194EDA20003C3BD7 /* KiesGebouwViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KiesGebouwViewDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +294,7 @@
 				269B63121949A2A9003C588F /* WachtViewDelegate.h */,
 				269B63171949ABBD003C588F /* KiesGebouwView.h */,
 				269B63181949ABBD003C588F /* KiesGebouwView.m */,
+				26E07891194EDA20003C3BD7 /* KiesGebouwViewDelegate.h */,
 				26E0788E194D9506003C3BD7 /* ConnectieView.h */,
 				26E0788F194D9506003C3BD7 /* ConnectieView.m */,
 			);

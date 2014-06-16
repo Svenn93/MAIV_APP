@@ -82,14 +82,13 @@
 
 - (void)timerReachedThreeSeconds
 {
-    NSLog(@"MWUAHAHAHAHAH");
     self.navigationItem.leftBarButtonItem = nil;
 }
 
 - (void)timerReachedNilSeconds
 {
     [self.timer invalidate];
-    KiesGebouwViewController *vc = [[KiesGebouwViewController alloc]initWithNibName:nil bundle:nil];
+    KiesGebouwViewController *vc = [[KiesGebouwViewController alloc]initWithGebouwid:self.gebouwid];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

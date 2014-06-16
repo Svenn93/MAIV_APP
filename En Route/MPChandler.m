@@ -102,7 +102,14 @@
         if([dict objectForKey:@"outlineid"])
         {
             [self.arrGekozenOutlines setObject:[dict objectForKey:@"outlineid"] forKey:peerID];
-        }        
+        }
+        
+        if([self.arrGekozenOutlines count] == ([session.connectedPeers count] + 1))
+        {
+            NSLog(@"We kunnen doorgaan, jippie jippie jeej motherfucker");
+        }
+        
+        NSLog(@"De gekozen outlines: %@", self.arrGekozenOutlines);
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{

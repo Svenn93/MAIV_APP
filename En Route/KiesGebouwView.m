@@ -74,6 +74,7 @@
     NSDictionary *dict =[self.clipview.arrOutlines objectAtIndex:self.clipview.currentPage];
     NSLog(@"Kiesbutton tapped blabla: %@", [dict valueForKey:@"id"]);
     [self.delegate outlineGekozen:[[dict valueForKey:@"id"]intValue]];
+    [self.btnKies setEnabled:false];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame andOutlines:(NSMutableArray *)outlines

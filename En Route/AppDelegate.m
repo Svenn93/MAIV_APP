@@ -33,6 +33,8 @@
     [self.window setBackgroundColor:[UIColor blueNavigationBarColor]];
     [self.window makeKeyAndVisible];
     return YES;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handlerDidReceiveData:) name:@"handlerDidReceiveData" object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -156,6 +158,12 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - MPCHANDLER DATA
+- (void)handlerDidReceiveData:(NSNotification *)notfication
+{
+    NSLog(@"GENIOUS");
 }
 
 @end

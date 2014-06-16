@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConnectieViewDelegate.h"
 
 @interface ConnectieView : UIView
 - (void)updatePeers;
+@property (nonatomic, weak) id<ConnectieViewDelegate> delegate;
 @end

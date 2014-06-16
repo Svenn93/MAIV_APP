@@ -20,17 +20,23 @@
         [self fixTitleBar];
         [self setBackgroundColor:[UIColor paleBackgroundColor]];
         
+        UIImage *imageStap = [UIImage imageNamed:@"stap3"];
+        UIImageView *stapView = [[UIImageView alloc]initWithImage:imageStap];
+        [stapView setFrame:CGRectMake((frame.size.width - imageStap.size.width)/2, 0, imageStap.size.width, imageStap.size.height)];
+        [self addSubview:stapView];
+        
         UIImage *image = [UIImage imageNamed:@"gebouwKiesBg"];
         UIImageView *bgView = [[UIImageView alloc]initWithImage:image];
         [bgView setFrame:CGRectMake(0, frame.size.height- 64 - image.size.height, image.size.width, image.size.height)];
         
         UIImage *btnImage1 = [UIImage imageNamed:@"kiesUit"];
         UIImage *btnImage2 = [UIImage imageNamed:@"kiesIn"];
-        UIButton *btnKies = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btnKies setImage:btnImage1 forState:UIControlStateNormal];
-        [btnKies setImage:btnImage2 forState:UIControlStateHighlighted];
-        [btnKies setFrame:CGRectMake((frame.size.width - btnImage1.size.width)/2, 360, btnImage1.size.width, btnImage1.size.height)];
-        [btnKies addTarget:self action:@selector(kiesBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+        self.btnKies = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.btnKies setImage:btnImage1 forState:UIControlStateNormal];
+        [self.btnKies setImage:btnImage2 forState:UIControlStateHighlighted];
+        [self.btnKies setEnabled:NO];
+        [self.btnKies setFrame:CGRectMake((frame.size.width - btnImage1.size.width)/2, 360, btnImage1.size.width, btnImage1.size.height)];
+        [self.btnKies addTarget:self action:@selector(kiesBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
         
         UIImage *btnLinksImage = [UIImage imageNamed:@"wijzerLinks"];
         UIImage *btnRechtsImage = [UIImage imageNamed:@"wijzerRechts"];
@@ -56,7 +62,8 @@
         
         [self addSubview:self.clipview];
         [self addSubview:bgView];
-        [self addSubview:btnKies];
+        [self addSubview:self.btnKies];
+        
     }
     return self;
 }
@@ -64,14 +71,20 @@
 - (void)kiesBtnTapped:(id)sender
 {
     NSLog(@"Kies button tapped %@", [self.clipview.arrOutlines objectAtIndex:self.clipview.currentPage]);
-    [self.delegate outlineGekozen:self.clipview.currentPage];
-    
+    NSDictionary *dict =[self.clipview.arrOutlines objectAtIndex:self.clipview.currentPage];
+    NSLog(@"Kiesbutton tapped blabla: %@", [dict valueForKey:@"id"]);
+    [self.delegate outlineGekozen:[[dict valueForKey:@"id"]intValue]];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame andOutlines:(NSMutableArray *)outlines
 {
     self.arrOutlines = outlines;
     return [self initWithFrame:frame];
+}
+
+- (void)enableButton
+{
+    [self.btnKies setEnabled:YES];
 }
 
 - (void)btnTapped:(id)sender
@@ -85,7 +98,6 @@
     }else{
         [self.clipview setPage:self.clipview.currentPage+1];
     }
-    
 }
 
 /*

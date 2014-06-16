@@ -20,12 +20,24 @@
         // Initialization code
         UIImage *bgImage = [UIImage imageNamed:@"bgConnection"];
         UIImageView *bgView = [[UIImageView alloc]initWithImage:bgImage];
-        [bgView setFrame:CGRectMake((frame.size.width - bgImage.size.width)/2, frame.size.height - bgImage.size.height - 72, bgImage.size.width, bgImage.size.height)];
+        [bgView setFrame:CGRectMake((frame.size.width - bgImage.size.width)/2, frame.size.height - bgImage.size.height - 12, bgImage.size.width, bgImage.size.height)];
         [self addSubview:bgView];
         [self setBackgroundColor:[UIColor paleBackgroundColor]];
+        
+        UIImage *sluitImage = [UIImage imageNamed:@"sluit"];
+        UIButton *sluitView = [UIButton buttonWithType:UIButtonTypeCustom];
+        [sluitView setImage:sluitImage forState:UIControlStateNormal];
+        [sluitView setFrame:CGRectMake(frame.size.width - sluitImage.size.width - 20, 30, sluitImage.size.width, sluitImage.size.height)];
+        [sluitView addTarget:self action:@selector(sluitTapped) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:sluitView];
         [self updatePeers];
     }
     return self;
+}
+
+- (void)sluitTapped
+{
+    [self.delegate sluitButtonTapped];
 }
 
 - (void)updatePeers

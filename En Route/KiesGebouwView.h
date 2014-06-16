@@ -14,6 +14,9 @@
 @property (nonatomic, strong)UIScrollView *scrollview;
 @property (nonatomic, strong)ClipView *clipview;
 @property (nonatomic, strong)NSMutableArray *arrOutlines;
+@property (nonatomic, strong)UIButton *btnKies;
 - (instancetype)initWithFrame:(CGRect)frame andOutlines:(NSMutableArray *)outlines;
+- (void)enableButton;
 @property (nonatomic, weak) id<KiesGebouwViewDelegate> delegate;
+
 @end

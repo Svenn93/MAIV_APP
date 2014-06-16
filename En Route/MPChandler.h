@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *ArrayInvitationhandler;
 @property (nonatomic)BOOL shouldInvite;
 @property (nonatomic, strong) NSString *servicetype;
+@property (nonatomic, strong) NSMutableDictionary *arrGekozenOutlines;
 - (void)setupServiceType:(NSString *)servicetype;
 - (void)setupPeerWithDisplayName:(NSString *)displayName;
 - (void)setupSession;

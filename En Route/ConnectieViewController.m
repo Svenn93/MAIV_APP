@@ -8,6 +8,7 @@
 
 #import "ConnectieViewController.h"
 #import "ConnectieView.h"
+#import "UIViewController+PortraitViewController.h"
 
 @interface ConnectieViewController ()
 
@@ -20,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self setUpImageBackButton];
     }
     return self;
 }
@@ -28,12 +30,20 @@
 {
     CGRect frame = [[UIScreen mainScreen]bounds];
     ConnectieView *v = [[ConnectieView alloc]initWithFrame:frame];
+    v.delegate = self;
     [self setView:v];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     
+}
+
+- (void)sluitButtonTapped
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)viewDidLoad

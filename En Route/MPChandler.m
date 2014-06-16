@@ -22,6 +22,7 @@
 - (void)setupServiceType:(NSString *)servicetype
 {
     self.servicetype = servicetype;
+    self.arrGekozenOutlines = [NSMutableDictionary dictionary];
 }
 
 - (void)setupBrowser {
@@ -92,11 +93,20 @@
 - (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID {
     NSDictionary *userInfo = @{ @"data": data,
                                 @"peerID": peerID };
+    id object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSLog(@"HET OBJECT: %@", object);
+    if([object isKindOfClass:[NSMutableDictionary class]])
+    {
+        NSDictionary *dict = object;
+        
+        if([dict objectForKey:@"outlineid"])
+        {
+            [self.arrGekozenOutlines setObject:[dict objectForKey:@"outlineid"] forKey:peerID];
+        }        
+    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MPCDemo_DidReceiveDataNotification"
-                                                            object:nil
-                                                          userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"handlerDidReceiveData" object:nil userInfo:userInfo];
     });
 }
 

@@ -44,6 +44,9 @@
         [connectieButton addTarget:self action:@selector(showConnectionScreen) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = barconnectieButton;
         
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(peerDidChangeState:) name:@"peerDidChangeState" object:nil];
+        [self checkIfPeersConnected];
+        
     }
     return self;
 }
@@ -58,12 +61,25 @@
 {
     NSLog(@"SHOW CONNECTION SCREEN");
     ConnectieViewController *connectieVC = [[ConnectieViewController alloc]initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:connectieVC animated:YES];
+    [self.navigationController presentViewController:connectieVC animated:YES completion:^{
+        
+    }];
 }
 
 - (void)outlineGekozen:(int)outlineid
 {
     NSLog(@"Outline gekozen");
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjects:[NSArray arrayWithObject:[NSNumber numberWithInt:outlineid]] forKeys:[NSArray arrayWithObject:@"outlineid"]];
+    id <NSSecureCoding> object = dict;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
+    NSError *error = nil;
+    if (![appDelegate.mpcHandler.browserSession sendData:data
+                        toPeers:appDelegate.mpcHandler.browserSession.connectedPeers
+                       withMode:MCSessionSendDataReliable
+                          error:&error]){
+        NSLog(@"[Error] %@", error);
+    }
 }
 
 - (void)loadView
@@ -82,6 +98,23 @@
     KiesGebouwView *v = [[KiesGebouwView alloc]initWithFrame:frame andOutlines:self.arrOutlines];
     v.delegate = self;
     [self setView:v];
+}
+
+-(void)peerDidChangeState:(NSNotification *)notification
+{
+    
+    [self checkIfPeersConnected];
+    
+}
+
+- (void)checkIfPeersConnected
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSArray *connpeers = appDelegate.mpcHandler.browserSession.connectedPeers;
+    if([connpeers count] > 0)
+    {
+        [(KiesGebouwView *)self.view enableButton];
+    }
 }
 
 - (void)viewDidLoad

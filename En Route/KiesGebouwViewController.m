@@ -80,6 +80,8 @@
                           error:&error]){
         NSLog(@"[Error] %@", error);
     }
+    
+    [appDelegate.mpcHandler.arrGekozenOutlines setObject:[NSString stringWithFormat:@"%d",outlineid] forKey:appDelegate.mpcHandler.peerID];
 }
 
 - (void)loadView

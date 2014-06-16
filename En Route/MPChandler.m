@@ -24,12 +24,12 @@
     self.browser.delegate = self;
     [self.browser startBrowsingForPeers];
     NSLog(@"START BROWSING");
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showSession) userInfo:nil repeats:YES];
+    //NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showSession) userInfo:nil repeats:YES];
 }
 
 - (void)showSession
 {
-    NSLog(@"DE SESSION: %@, %@", self.browserSession.connectedPeers, self.advertiseSession.connectedPeers);
+    NSLog(@"DE SESSION: %@", self.browserSession.connectedPeers);
 }
 
 - (void)advertiseSelf:(BOOL)advertise {
@@ -73,7 +73,7 @@
     NSDictionary *userInfo = @{ @"peerID": peerID, @"state" : @(state) };
     NSLog(@"De userinfo: %@", userInfo);
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"MPCDemo_DidChangeStateNotification" object:nil userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"peerDidChangeState" object:nil userInfo:userInfo];
     });
 }
 

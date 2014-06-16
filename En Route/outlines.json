@@ -1,42 +1,78 @@
 [
   {
-    "outlinepath" : "outline1",
+    "outlinepath" : "uitsnijding-01",
     "id" : 1
   },
   {
-    "outlinepath" : "outline1",
+    "outlinepath" : "uitsnijding-02",
     "id" : 2
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-03",
     "id" : 3
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-04",
     "id" : 4
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-05",
     "id" : 5
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-06",
     "id" : 6
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-07",
     "id" : 7
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-08",
     "id" : 8
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-09",
     "id" : 9
   },
   {
-    "outlinepath":"outline1",
+    "outlinepath":"uitsnijding-10",
     "id" : 10
-  }
+ },
+ {
+ "outlinepath":"uitsnijding-11",
+ "id" : 11
+ },
+ {
+ "outlinepath":"uitsnijding-12",
+ "id" : 12
+ },
+ {
+ "outlinepath":"uitsnijding-13",
+ "id" : 13
+ },
+ {
+ "outlinepath":"uitsnijding-14",
+ "id" : 14
+ },
+ {
+ "outlinepath":"uitsnijding-15",
+ "id" : 15
+ },
+ {
+ "outlinepath":"uitsnijding-16",
+ "id" : 16
+ },
+ {
+ "outlinepath":"uitsnijding-17",
+ "id" : 17
+ },
+ {
+ "outlinepath":"uitsnijding-18",
+ "id" : 18
+ },
+ {
+ "outlinepath":"uitsnijding-19",
+ "id" : 19
+ }
 ]
